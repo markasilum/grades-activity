@@ -4,18 +4,14 @@ import { useState } from 'react';
 import SearchBar from './SearchBar';
 import QpiCalculator from './QpiCalculator';
 
-const classes = [
-    {id:1, crsName: 'TECHNOPRENEURSHIP 1', crsNum: 'IS 3149', units: 5, grade:'A', numGrade:4},
-    {id:2, crsName: 'NETWORKING  1', crsNum: 'IT 3147', units: 5, grade:'B',numGrade:3},
-    {id:3, crsName: 'IT ELECTIVE 2', crsNum: 'IT 3148', units: 5, grade:'C',numGrade:2},
-  ]
-
-const GradesTable = () => {
-const [data, setData] = useState(classes)
+const GradesTable = (props) => {
+const [data, setData] = useState(props.items)
 const [txtValue, setTextValue] = useState('')
 
   return (
-    <div className="fixed w-11/12 ml-6 mt-4">
+    <aside id="mainpage" className="fixed top-0 left-1/4 z-45 w-4/5 h-screen transition-transform -translate-x-full sm:translate-x-0 mx-6 right-8" aria-label="mainpage">
+      <div className='h-full px-6 py-6 overflow-y-auto bg-gray-50 '>
+            <div className="fixed w-11/12 ml-6 mt-4">
         <SearchBar value = {txtValue} onChange={(e)=>setTextValue(e.target.value)}/>
         
         <table className="w-11/12 text-sm text-left text-gray-500 mt-8 table-fixed ">
@@ -48,6 +44,9 @@ const [txtValue, setTextValue] = useState('')
         </tfoot>
         </table>
     </div>
+      </div>
+    </aside>
+    
   )
 }
 
