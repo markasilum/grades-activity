@@ -1,5 +1,6 @@
 import Form from "./components/Form"
 import GradesTable from "./components/GradesTable"
+import { useState } from 'react';
 
 const classes = [
   {id:1, crsName: 'TECHNOPRENEURSHIP 1', crsNum: 'IS 3149', units: 5, grade:'A', numGrade:4},
@@ -18,10 +19,11 @@ const numEquiv = {
 }
 
 function App() {
+  const [data, setData] = useState(classes)
   return (
     <>
-      <Form numbers={numEquiv} classList={classes}></Form>
-      <GradesTable items={classes}></GradesTable>
+      <Form numbers={numEquiv} classList={data}></Form>
+      <GradesTable items={data}></GradesTable>
     </>
   )
 }
