@@ -1,59 +1,83 @@
 import React from 'react'
+import { useState } from 'react';
 
 const Form = (props) => {
+  const [data, setData] = useState(props.classList.items)
+
+  const [form, setForm] = useState({
+    crsName:"",
+    crsNum:"",
+    units:0,
+    // grade:'',
+    // numGrade:0
+  })
+
+  const handleForm = (e) => setForm({...form,[e.target.id]: e.target.value})
+
+  const [radioGrade,setRadioGrade] = useState("")
+  const onGradeChange =(e) =>{
+    setRadioGrade(e.target.value)
+  }
+
+  // const handleSubmit =(e) =>{
+  //   // e.preventDefault()
+  //   //get numGrade based on letter grade before setting data
+  //   setData([...data, {id:data.length+1, crsName:form.crsName, crsNum:form.crsNum, units:form.units, grade:radioGrade}])
+  // }
+
   return (
     <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-1/4 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
       <div className='h-full px-3 py-6 overflow-y-auto bg-gray-50'>
       <form>
         <div className="mb-4">
             <label for="courseNum" className="block mb-2 text-sm font-medium text-gray-900 ">Course Number</label>
-            <input type="text" id="courseNum" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" ></input>
+            <input type="text" id="courseNum" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" value={form.crsNum} onChange={handleForm}></input>
         </div>
         <div className="mb-4">
             <label for="courseName" className="block mb-2 text-sm font-medium text-gray-900 ">Course Name</label>
-            <input type="text" id="courseName" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" ></input>
+            <input type="text" id="courseName" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" value={form.crsName} onChange={handleForm}></input>
         </div>
         <div className="mb-4">
-            <label for="units" className="block mb-2 text-sm font-medium text-gray-900 ">Units</label>
-            <input type="number" id="units" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" ></input>
+            <label for="units" className="block mb-2 text-sm font-medium text-gray-900 " >Units</label>
+            <input type="number" id="units" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" value={form.units} onChange={handleForm}></input>
         </div>
 
         <div>
-          <label for="units" className="block mb-2 text-sm font-medium text-gray-900 ">Grades</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 ">Grades</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="A" type="radio" name="grades" value='4' className="w-4 h-4 border-gray-300" />
+          <input id="A" type="radio" name="grades" value="A" className="w-4 h-4 border-gray-300" checked={radioGrade==="A"} onChange={onGradeChange}/>
           <label for="A" className="block ml-2 text-sm font-medium text-gray-900 ">A</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="B+" type="radio" name="grades" value="3.5" className="w-4 h-4 border-gray-300" />
+          <input id="B+" type="radio" name="grades" value="B+" className="w-4 h-4 border-gray-300" checked={radioGrade==="B+"} onChange={onGradeChange}/>
           <label for="B+" className="block ml-2 text-sm font-medium text-gray-900 ">B+</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="B" type="radio" name="grades" value="3" className="w-4 h-4 border-gray-300" />
+          <input id="B" type="radio" name="grades" value="B" className="w-4 h-4 border-gray-300" checked={radioGrade==="B"} onChange={onGradeChange}/>
           <label for="B" className="block ml-2 text-sm font-medium text-gray-900 ">B</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="C+" type="radio" name="grades" value="2.5" className="w-4 h-4 border-gray-300" />
+          <input id="C+" type="radio" name="grades" value="C+" className="w-4 h-4 border-gray-300" checked={radioGrade==="C+"} onChange={onGradeChange}/>
           <label for="C+" className="block ml-2 text-sm font-medium text-gray-900 ">C+</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="C" type="radio" name="grades" value="2" className="w-4 h-4 border-gray-300" />
+          <input id="C" type="radio" name="grades" value="C" className="w-4 h-4 border-gray-300" checked={radioGrade==="C"} onChange={onGradeChange}/>
           <label for="C" className="block ml-2 text-sm font-medium text-gray-900 ">C</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="D" type="radio" name="grades" value="1" className="w-4 h-4 border-gray-300" />
+          <input id="D" type="radio" name="grades" value="D" className="w-4 h-4 border-gray-300" checked={radioGrade==="D"} onChange={onGradeChange}/>
           <label for="D" className="block ml-2 text-sm font-medium text-gray-900 ">D</label>
         </div>
 
         <div className="flex items-center mb-4">
-          <input id="F" type="radio" name="grades" value="0" className="w-4 h-4 border-gray-300" />
+          <input id="F" type="radio" name="grades" value="F" className="w-4 h-4 border-gray-300" checked={radioGrade==="F"} onChange={onGradeChange}/>
           <label for="F" className="block ml-2 text-sm font-medium text-gray-900 ">F</label>
         </div>
 

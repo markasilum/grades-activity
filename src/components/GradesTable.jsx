@@ -11,7 +11,7 @@ const [txtValue, setTextValue] = useState('')
   return (
     <aside id="mainpage" className="fixed top-0 left-1/4 z-45 w-4/5 h-screen transition-transform -translate-x-full sm:translate-x-0 mx-6 right-8" aria-label="mainpage">
       <div className='h-full px-6 py-6 overflow-y-auto bg-gray-50 '>
-            <div className="fixed w-11/12 ml-6 mt-4">
+        <div className="fixed w-11/12 ml-6 mt-4">
         <SearchBar value = {txtValue} onChange={(e)=>setTextValue(e.target.value)}/>
         
         <table className="w-11/12 text-sm text-left text-gray-500 mt-8 table-fixed ">
