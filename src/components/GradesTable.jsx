@@ -43,7 +43,7 @@ const [txtValue, setTextValue] = useState('')
             </tr>
         </tfoot>
         </table>
-    </div>
+        </div>
       </div>
     </aside>
     

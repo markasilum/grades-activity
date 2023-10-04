@@ -20,9 +20,13 @@ const numEquiv = {
 
 function App() {
   const [data, setData] = useState(classes)
+  
+  const handleFormSubmit = (formData) => {
+    setData([...data, formData]);
+  };
   return (
     <>
-      <Form numbers={numEquiv} classList={data}></Form>
+      <Form numbers={numEquiv} classList={data} set={setData} onSubmit={handleFormSubmit}></Form>
       <GradesTable items={data}></GradesTable>
     </>
   )
