@@ -5,8 +5,8 @@ import SearchBar from './SearchBar';
 import QpiCalculator from './QpiCalculator';
 
 const GradesTable = (props) => {
-const [data, setData] = useState(props.items)
 const [txtValue, setTextValue] = useState('')
+// console.log(props)
 
   return (
     <aside id="mainpage" className="fixed top-0 left-1/4 z-45 w-4/5 h-screen transition-transform -translate-x-full sm:translate-x-0 mx-6 right-8" aria-label="mainpage">
@@ -32,14 +32,14 @@ const [txtValue, setTextValue] = useState('')
             </tr>
         </thead>
         <tbody>
-            <Items items={data} query={txtValue}/>
+            <Items items={props.items} query={txtValue}/>
         </tbody>
         <tfoot className=''>
             <tr className="font-semibold text-gray-900">
                 <td></td>
                 <td></td>
                 <th scope="row" className="px-6 py-3 text-base ">Total QPI</th>
-                <QpiCalculator items={data}/>
+                <QpiCalculator data={props.items}/>
             </tr>
         </tfoot>
         </table>
